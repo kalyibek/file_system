@@ -9,13 +9,12 @@ if operation == 'list':
     print(os.listdir(dir_path))
 else:
     file_name = sys.argv[2]
-    match operation:
-        case 'add':
-            shutil.copy(file_name, os.path.join(dir_path))
-            print(f'{os.path.join(dir_path, file_name)} added')
-        case 'delete':
-            if file_name in os.listdir(dir_path):
-                os.remove(os.path.join(dir_path, file_name))
-                print(f'{os.path.join(dir_path, file_name)} deleted')
-            else:
-                print('ERROR')
+    file_path = os.path.join(dir_path, file_name)
+    if operation == 'add':
+        shutil.copy(file_name, dir_path)
+        print(f'{file_path} added')
+    elif operation == 'remove' and file_name in os.listdir(dir_path):
+        os.remove(file_path)
+        print(f'{file_path} deleted')
+    else:
+        print('ERROR')
