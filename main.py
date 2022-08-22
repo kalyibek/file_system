@@ -8,7 +8,6 @@ commands = {
 }
 
 if __name__ == '__main__':
-
     if len(sys.argv) < 2:
         print('Error: no arguments')
         exit()
@@ -18,4 +17,5 @@ if __name__ == '__main__':
     if command not in commands:
         print(f'Unknown command "{command}"')
         exit()
+
     commands[command](*args)
